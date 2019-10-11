@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Compile Remove="Migrations\20191011082022_initial-migration.cs" />
+    <Compile Remove="Migrations\20191011082458_initial-migration.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -14,6 +15,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\StoreManagement.Entity\StoreManagement.Entity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>
