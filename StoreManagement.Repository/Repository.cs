@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using StoreManagement.DAL;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace StoreManagement.Repository
 {
@@ -16,29 +14,34 @@ namespace StoreManagement.Repository
             _dbContext = dbContext;
             _dbSet = dbContext.Set<T>();
         }
-        public Task Delete(T entity)
+        public void Delete(T entity)
         {
-            
+            _dbSet.Remove(entity);
         }
 
-        public Task<T> Get(object input)
+        public async Task<T> GetAsync(object input)
         {
-            throw new NotImplementedException();
+            return await _dbSet.FindAsync(input);
         }
 
-        public Task<IEnumerable<T>> GetAll()
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _dbSet.ToListAsync();
         }
 
-        public Task<T> Insert(T entity)
+        public async Task InsertAsync(T entity)
         {
-            throw new NotImplementedException();
+            await _dbSet.AddAsync(entity);
         }
 
-        public Task<T> Update(T entity)
+        public void Update(T entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Update(entity);
+        }
+
+        public async Task SaveAsync()
+        {
+            await _dbContext.SaveChangesAsync();
         }
     }
 }
