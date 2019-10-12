@@ -1,8 +1,8 @@
-﻿using System;
+﻿using StoreManagement.Repository;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using StoreManagement.Repository;
 
 namespace StoreManagement.Service
 {
@@ -32,7 +32,7 @@ namespace StoreManagement.Service
 
         public async Task InsertAsync(T entity)
         {
-            await _repository.InsertAsync(entity);
+             _repository.Insert(entity);
             await _repository.SaveAsync();
         }
 

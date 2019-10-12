@@ -1,12 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using StoreManagement.Entity;
-using System;
+﻿using System;
+using System.Data.Entity;
 
 namespace StoreManagement.DAL
 {
     public class StoreManagementContext : DbContext
     {
-        public StoreManagementContext(DbContextOptions options) : base(options)
+        public StoreManagementContext() : base("StoreManagementDb")
         {
         }
 

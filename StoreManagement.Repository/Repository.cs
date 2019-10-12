@@ -1,7 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using StoreManagement.DAL;
+﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Text;
 using System.Threading.Tasks;
+using StoreManagement.DAL;
 
 namespace StoreManagement.Repository
 {
@@ -29,14 +31,14 @@ namespace StoreManagement.Repository
             return await _dbSet.ToListAsync();
         }
 
-        public async Task InsertAsync(T entity)
+        public void Insert(T entity)
         {
-            await _dbSet.AddAsync(entity);
+            _dbSet.Add(entity);
         }
 
         public void Update(T entity)
         {
-            _dbSet.Update(entity);
+            _dbContext.Entry(entity).State = EntityState.Modified;
         }
 
         public async Task SaveAsync()
