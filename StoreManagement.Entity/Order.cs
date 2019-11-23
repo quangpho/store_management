@@ -25,6 +25,6 @@ namespace StoreManagement.Entity
         public string Note { get; set; }
 
         public int DressId { get; set; }
-        public Dress Dress { get; set; }
+        public virtual Dress Dress { get; set; }
     }
 }
